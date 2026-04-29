@@ -38,7 +38,7 @@
                             </span>
 
                             <span class="text-warning fw-bold">
-                                ⭐ {{ $movie->rating }}
+                                {{ $movie->rating }}
                             </span>
 
                         </div>
@@ -64,6 +64,11 @@
 
                             <a href="/edit/{{ $movie->id }}" class="btn btn-warning btn-sm">
                                 Edit
+                            </a>
+
+                            <a href="/delete/{{ $movie->id }}" class="btn btn-danger btn-sm"
+                                onclick="return confirm('Yakin ingin menghapus movie ini?')">
+                                Delete
                             </a>
 
                         </div>

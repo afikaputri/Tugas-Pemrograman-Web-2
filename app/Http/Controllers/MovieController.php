@@ -62,4 +62,12 @@ class MovieController extends Controller
 
         return redirect('/');
     }
+
+    // DELETE DATA
+public function destroy($id)
+{
+    Movie::destroy($id);
+
+    return redirect('/');
+}
 }
