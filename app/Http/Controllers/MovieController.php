@@ -13,4 +13,24 @@ class MovieController extends Controller
 
         return view('movies.index', compact('movies'));
     }
+
+    public function create()
+    {
+        return view('movies.create');
+    }
+
+    public function store(Request $request)
+    {
+        Movie::create([
+            'title' => $request->title,
+            'director' => $request->director,
+            'release_year' => $request->release_year,
+            'genre' => $request->genre,
+            'rating' => $request->rating,
+            'synopsis' => $request->synopsis,
+            'poster' => $request->poster
+        ]);
+
+        return redirect('/');
+    }
 }

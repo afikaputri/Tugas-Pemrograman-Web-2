@@ -14,7 +14,7 @@
             </p>
         </div>
 
-        <a href="#" class="btn btn-dark">
+        <a href="/create" class="btn btn-dark">
             + Tambah Film
         </a>
 
