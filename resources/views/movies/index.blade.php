@@ -8,7 +8,7 @@
     <div class="d-flex justify-content-between align-items-center mb-4">
 
         <div>
-            <h1 class="fw-bold"> Movie Collection</h1>
+            <h1 class="fw-bold">Movie Collection</h1>
             <p class="text-muted">
                 Daftar film favorit terbaik pilihan.
             </p>
@@ -58,6 +58,15 @@
                         <p>
                             {{ Str::limit($movie->synopsis, 80) }}
                         </p>
+
+                        <!-- TOMBOL EDIT -->
+                        <div class="mt-3">
+
+                            <a href="/edit/{{ $movie->id }}" class="btn btn-warning btn-sm">
+                                Edit
+                            </a>
+
+                        </div>
 
                     </div>
 
