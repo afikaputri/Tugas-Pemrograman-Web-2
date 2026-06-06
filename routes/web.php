@@ -4,7 +4,7 @@ use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\MovieController;
 
 Route::get('/', [MovieController::class, 'index']);
-
+Route::get('/trash', [MovieController::class, 'trash']);
 Route::get('/create', [MovieController::class, 'create']);
 Route::post('/store', [MovieController::class, 'store']);
 Route::get('/edit/{id}', [MovieController::class, 'edit']);

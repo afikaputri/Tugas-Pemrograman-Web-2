@@ -104,4 +104,12 @@ public function destroy($id)
 
     return redirect('/');
 }
+
+// Trash
+public function trash()
+{
+    $movies = Movie::onlyTrashed()->get();
+
+    return view('movies.trash', compact('movies'));
+}
 }

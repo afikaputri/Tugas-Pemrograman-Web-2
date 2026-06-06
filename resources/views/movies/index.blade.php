@@ -12,87 +12,90 @@
             <p class="text-muted">
                 Daftar film favorit terbaik pilihan.
             </p>
-        </div>
 
-        <a href="/create" class="btn btn-dark">
-            + Tambah Film
-        </a>
+            <div>
+                <a href="/trash" class="btn btn-danger">
+                    Trash
+                </a>
 
-    </div>
+                <a href="/create" class="btn btn-dark">
+                    + Tambah Film
+                </a>
+            </div>
 
-    <div class="row">
+            <div class="row">
 
-        @forelse($movies as $movie)
-            <div class="col-md-4 mb-4">
+                @forelse($movies as $movie)
+                    <div class="col-md-4 mb-4">
 
-                <div class="card border-0 shadow-sm h-100">
+                        <div class="card border-0 shadow-sm h-100">
 
-                    <img src="https://via.placeholder.com/400x250" class="card-img-top">
+                            <img src="https://via.placeholder.com/400x250" class="card-img-top">
 
-                    <div class="card-body">
+                            <div class="card-body">
 
-                        <div class="d-flex justify-content-between mb-2">
+                                <div class="d-flex justify-content-between mb-2">
 
-                            <span class="badge bg-dark">
-                                {{ $movie->genre }}
-                            </span>
+                                    <span class="badge bg-dark">
+                                        {{ $movie->genre }}
+                                    </span>
 
-                            <span class="text-warning fw-bold">
-                                {{ $movie->rating }}
-                            </span>
+                                    <span class="text-warning fw-bold">
+                                        {{ $movie->rating }}
+                                    </span>
 
-                        </div>
+                                </div>
 
-                        <h4 class="fw-bold">
-                            {{ $movie->title }}
-                        </h4>
+                                <h4 class="fw-bold">
+                                    {{ $movie->title }}
+                                </h4>
 
-                        <p class="text-muted mb-1">
-                            Director: {{ $movie->director }}
-                        </p>
+                                <p class="text-muted mb-1">
+                                    Director: {{ $movie->director }}
+                                </p>
 
-                        <p class="text-muted mb-1">
-                            Release: {{ $movie->release_year }}
-                        </p>
+                                <p class="text-muted mb-1">
+                                    Release: {{ $movie->release_year }}
+                                </p>
 
-                        <p class="text-muted">
-                            Duration: {{ $movie->duration }} menit
-                        </p>
+                                <p class="text-muted">
+                                    Duration: {{ $movie->duration }} menit
+                                </p>
 
-                        <p>
-                            {{ Str::limit($movie->synopsis, 80) }}
-                        </p>
+                                <p>
+                                    {{ Str::limit($movie->synopsis, 80) }}
+                                </p>
 
-                        <!-- TOMBOL EDIT -->
-                        <div class="mt-3">
+                                <!-- TOMBOL EDIT -->
+                                <div class="mt-3">
 
-                            <a href="/edit/{{ $movie->id }}" class="btn btn-warning btn-sm">
-                                Edit
-                            </a>
+                                    <a href="/edit/{{ $movie->id }}" class="btn btn-warning btn-sm">
+                                        Edit
+                                    </a>
 
-                            <a href="/delete/{{ $movie->id }}" class="btn btn-danger btn-sm"
-                                onclick="return confirm('Yakin ingin menghapus movie ini?')">
-                                Delete
-                            </a>
+                                    <a href="/delete/{{ $movie->id }}" class="btn btn-danger btn-sm"
+                                        onclick="return confirm('Yakin ingin menghapus movie ini?')">
+                                        Delete
+                                    </a>
+
+                                </div>
+
+                            </div>
 
                         </div>
 
                     </div>
 
-                </div>
+                @empty
+
+                    <div class="col-12">
+
+                        <div class="alert alert-secondary text-center">
+                            Belum ada data film.
+                        </div>
+
+                    </div>
+                @endforelse
 
             </div>
-
-        @empty
-
-            <div class="col-12">
-
-                <div class="alert alert-secondary text-center">
-                    Belum ada data film.
-                </div>
-
-            </div>
-        @endforelse
-
-    </div>
-@endsection
+        @endsection
