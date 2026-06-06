@@ -44,7 +44,7 @@
                 </div>
 
                 <div class="mb-3">
-                    <label class="form-label">Poster URL</label>
+                    <label class="form-label">poster url</label>
 
                     <input type="text" name="poster" class="form-control" value="{{ $movie->poster }}">
                 </div>
