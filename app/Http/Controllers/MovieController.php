@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Models\Movie;
+use Illuminate\Support\Facades\DB;
 
 class MovieController extends Controller
 {
@@ -24,20 +25,35 @@ class MovieController extends Controller
     // STORE DATA
     public function store(Request $request)
     {
-        Movie::create([
-            'title' => $request->title,
-            'director' => $request->director,
-            'release_year' => $request->release_year,
-            'duration' => $request->duration,
-            'genre' => $request->genre,
-            'rating' => $request->rating,
-            'synopsis' => $request->synopsis,
-            'poster' => $request->poster
-        ]);
+        DB::beginTransaction();
 
-        return redirect('/');
+        try {
+
+            Movie::create([
+                'title' => $request->title,
+                'director' => $request->director,
+                'release_year' => $request->release_year,
+                'duration' => $request->duration,
+                'genre' => $request->genre,
+                'rating' => $request->rating,
+                'synopsis' => $request->synopsis,
+                'poster' => $request->poster
+            ]);
+
+            DB::commit();
+
+            return redirect('/')
+                ->with('success', 'Movie berhasil ditambahkan');
+
+        } catch (\Exception $e) {
+
+            DB::rollBack();
+
+            return redirect()
+                ->back()
+                ->with('error', 'Movie gagal ditambahkan');
+        }
     }
-
     // FORM EDIT
     public function edit($id)
     {
