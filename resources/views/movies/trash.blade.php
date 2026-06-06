@@ -22,6 +22,7 @@
                         <th>Judul</th>
                         <th>Director</th>
                         <th>Duration</th>
+                        <th>Aksi</th>
                     </tr>
 
                 </thead>
@@ -35,6 +36,11 @@
                             <td>{{ $movie->title }}</td>
                             <td>{{ $movie->director }}</td>
                             <td>{{ $movie->duration }} menit</td>
+                            <td>
+                                <a href="/restore/{{ $movie->id }}" class="btn btn-success btn-sm">
+                                    Restore
+                                </a>
+                            </td>
 
                         </tr>
 

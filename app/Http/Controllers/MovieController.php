@@ -112,4 +112,15 @@ public function trash()
 
     return view('movies.trash', compact('movies'));
 }
+
+//restore
+public function restore($id)
+{
+    Movie::withTrashed()
+        ->find($id)
+        ->restore();
+
+    return redirect('/trash')
+        ->with('success', 'Movie berhasil direstore');
+}
 }
