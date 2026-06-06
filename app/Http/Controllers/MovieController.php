@@ -123,4 +123,15 @@ public function restore($id)
     return redirect('/trash')
         ->with('success', 'Movie berhasil direstore');
 }
+
+//forceDelete
+public function forceDelete($id)
+{
+    Movie::withTrashed()
+        ->find($id)
+        ->forceDelete();
+
+    return redirect('/trash')
+        ->with('success', 'Movie berhasil dihapus permanen');
+}
 }

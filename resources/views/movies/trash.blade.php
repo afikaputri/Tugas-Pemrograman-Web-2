@@ -40,8 +40,12 @@
                                 <a href="/restore/{{ $movie->id }}" class="btn btn-success btn-sm">
                                     Restore
                                 </a>
-                            </td>
 
+                                <a href="/force-delete/{{ $movie->id }}" class="btn btn-danger btn-sm"
+                                    onclick="return confirm('Yakin ingin menghapus permanen data ini?')">
+                                    Hapus Permanen
+                                </a>
+                            </td>
                         </tr>
 
                     @empty
