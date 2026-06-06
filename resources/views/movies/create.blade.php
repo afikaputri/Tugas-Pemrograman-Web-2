@@ -27,6 +27,11 @@
                 </div>
 
                 <div class="mb-3">
+                    <label class="form-label">Durasi (Menit)</label>
+                    <input type="number" name="duration" class="form-control" required>
+                </div>
+
+                <div class="mb-3">
                     <label class="form-label">Genre</label>
                     <input type="text" name="genre" class="form-control" required>
                 </div>

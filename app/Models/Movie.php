@@ -11,15 +11,15 @@ class Movie extends Model
     use SoftDeletes;
 
     protected $fillable = [
-        'category_id',
         'title',
         'director',
         'release_year',
         'duration',
+        'genre',
         'rating',
         'synopsis',
+        'poster'
     ];
-
     public function category()
     {
         return $this->belongsTo(Category::class);

@@ -28,6 +28,7 @@ class MovieController extends Controller
             'title' => $request->title,
             'director' => $request->director,
             'release_year' => $request->release_year,
+            'duration' => $request->duration,
             'genre' => $request->genre,
             'rating' => $request->rating,
             'synopsis' => $request->synopsis,
@@ -49,11 +50,11 @@ class MovieController extends Controller
     public function update(Request $request, $id)
     {
         $movie = Movie::find($id);
-
         $movie->update([
             'title' => $request->title,
             'director' => $request->director,
             'release_year' => $request->release_year,
+            'duration' => $request->duration,
             'genre' => $request->genre,
             'rating' => $request->rating,
             'synopsis' => $request->synopsis,

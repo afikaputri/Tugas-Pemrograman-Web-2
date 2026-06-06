@@ -51,8 +51,12 @@
                             Director: {{ $movie->director }}
                         </p>
 
-                        <p class="text-muted">
+                        <p class="text-muted mb-1">
                             Release: {{ $movie->release_year }}
+                        </p>
+
+                        <p class="text-muted">
+                            Duration: {{ $movie->duration }} menit
                         </p>
 
                         <p>
