@@ -65,19 +65,36 @@ class MovieController extends Controller
     // UPDATE DATA
     public function update(Request $request, $id)
     {
-        $movie = Movie::find($id);
-        $movie->update([
-            'title' => $request->title,
-            'director' => $request->director,
-            'release_year' => $request->release_year,
-            'duration' => $request->duration,
-            'genre' => $request->genre,
-            'rating' => $request->rating,
-            'synopsis' => $request->synopsis,
-            'poster' => $request->poster
-        ]);
+        DB::beginTransaction();
 
-        return redirect('/');
+        try {
+
+            $movie = Movie::find($id);
+
+            $movie->update([
+                'title' => $request->title,
+                'director' => $request->director,
+                'release_year' => $request->release_year,
+                'duration' => $request->duration,
+                'genre' => $request->genre,
+                'rating' => $request->rating,
+                'synopsis' => $request->synopsis,
+                'poster' => $request->poster
+            ]);
+
+            DB::commit();
+
+            return redirect('/')
+                ->with('success', 'Movie berhasil diupdate');
+
+        } catch (\Exception $e) {
+
+            DB::rollBack();
+
+            return redirect()
+                ->back()
+                ->with('error', 'Movie gagal diupdate');
+        }
     }
 
     // DELETE DATA
